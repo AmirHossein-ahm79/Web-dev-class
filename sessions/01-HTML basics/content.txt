@@ -1,0 +1,77 @@
+HTML: The Structure Behind Every Web Page
+
+WebCraft Journal
+
+Lessons
+HTML Basics
+CSS
+JavaScript
+
+HTML: The Structure Behind Every Web Page
+
+Portrait of Alex Morgan
+
+Published by Alex Morgan on Tuesday, September 1st 2026
+
+HTML code displayed on a computer
+
+Every webpage you visit has a structure that helps the browser understand what each part of the page means. HTML is one of the main technologies responsible for creating that structure.
+
+In this lesson, we will take a closer look at HTML, understand its role in web development, and see why learning it is an important first step for anyone who wants to build websites.
+
+What exactly is HTML?
+
+H
+T
+M
+L
+
+Markup
+
+With HTML, we can tell the browser which content is a heading, which part is a paragraph, where an image should appear, which text is a link, and how different sections of a page are organized.
+
+Most HTML elements are built from three basic parts:
+
+The opening tag
+The content inside the element
+The closing tag
+
+MDN Web Docs
+
+Why is learning HTML important?
+
+HTML is one of the best places to start when entering the world of web development. Here are five good reasons to learn it:
+
+To understand how the structure of web pages is created
+
+To build websites without depending completely on visual website builders
+
+To create a strong foundation for learning CSS and JavaScript
+
+To understand and edit the code behind the websites you use every day
+
+To turn your ideas into real web pages 🚀
+
+HTML may look simple at first, but mastering its structure will make learning the rest of web development much easier. Keep practicing and start building your own pages!
+
+Recommended lessons
+
+HTML elements and tags
+
+Understanding HTML Elements
+
+By Daniel Reed
+
+CSS layout on a computer screen
+
+Your First Steps with CSS
+
+By Sophie Carter
+
+JavaScript code running in a browser
+
+How JavaScript Adds Interaction
+
+By Ryan Brooks
+
+Copyright © 2026 by WebCraft Journal.
