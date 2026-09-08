@@ -1,0 +1,352 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+body {
+  color: #333;
+  font-family: Arial, sans-serif;
+  border-top: 8px solid #6c5ce7;
+  background-color: #ffffff;
+  position: relative;
+}
+
+body > header,
+body > article,
+body > aside,
+body > footer {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================
+   MAIN HEADER
+========================= */
+
+body > header {
+  background-color: #f1efff;
+  padding: 24px 35px;
+  margin-top: 25px;
+  margin-bottom: 45px;
+
+  border-bottom: 2px solid #d8d2ff;
+}
+
+h1 {
+  color: #4b3fbf;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+  font-size: 17px;
+}
+
+nav a:link,
+nav a:visited {
+  color: #4b3fbf;
+  text-decoration: none;
+
+  margin-right: 24px;
+  padding: 6px 10px;
+
+  display: inline-block;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+nav a:hover {
+  color: #e17055;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #333;
+  color: white;
+  font-style: italic;
+}
+
+
+/* =========================
+   ARTICLE
+========================= */
+
+article {
+  margin-bottom: 50px;
+}
+
+article > header {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+h2 {
+  color: #4b3fbf;
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+
+/* Small label above the title */
+
+h2::before {
+  content: "HTML";
+  background-color: #ffeaa7;
+  color: #333;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  padding: 5px 9px;
+
+  display: inline-block;
+
+  position: absolute;
+  top: -14px;
+  left: -10px;
+}
+
+
+/* =========================
+   AUTHOR
+========================= */
+
+article > header img:first-of-type {
+  width: 50px;
+  height: 50px;
+
+  margin-right: 12px;
+
+  vertical-align: middle;
+}
+
+article > header p {
+  font-style: italic;
+  font-size: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+/* =========================
+   MAIN IMAGE
+========================= */
+
+article > header img:last-of-type {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin-top: 22px;
+}
+
+
+/* =========================
+   ARTICLE TEXT
+========================= */
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+article h3 {
+  color: #6c5ce7;
+
+  font-size: 28px;
+
+  margin-top: 38px;
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   LISTS
+========================= */
+
+ul,
+ol {
+  margin-left: 45px;
+  margin-bottom: 22px;
+}
+
+li {
+  font-size: 19px;
+  margin-bottom: 11px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* First item in every list */
+
+li:first-child {
+  font-weight: bold;
+}
+
+
+/* Last item */
+
+li:last-child {
+  font-style: italic;
+}
+
+
+/* =========================
+   LINKS INSIDE ARTICLE
+========================= */
+
+article a:link {
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+article a:visited {
+  color: #6c5ce7;
+}
+
+article a:hover {
+  color: #e17055;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+article a:active {
+  background-color: #222;
+  color: white;
+  font-style: italic;
+}
+
+
+/* =========================
+   ASIDE
+========================= */
+
+aside {
+  background-color: #f6f6f6;
+
+  border-top: 4px solid #6c5ce7;
+  border-bottom: 4px solid #6c5ce7;
+
+  padding: 35px 30px;
+
+  margin-bottom: 45px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+
+  margin-bottom: 28px;
+
+  color: #4b3fbf;
+}
+
+
+/* Remove bullets */
+
+aside ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+
+/* Each recommended lesson */
+
+aside li {
+  margin-bottom: 28px;
+  min-height: 75px;
+}
+
+
+/* Images inside aside */
+
+aside li img {
+  width: 75px;
+  height: 75px;
+
+  margin-right: 15px;
+
+  float: left;
+}
+
+
+/* Lesson title */
+
+aside li a:link,
+aside li a:visited {
+  color: #4b3fbf;
+  text-decoration: none;
+
+  font-size: 17px;
+}
+
+aside li a:hover {
+  color: #e17055;
+  text-decoration: underline;
+}
+
+
+/* Author names */
+
+aside li p {
+  font-size: 15px;
+  font-weight: bold;
+
+  margin-top: 7px;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  font-size: 15px;
+  color: #777;
+
+  padding: 20px 0;
+  margin-bottom: 30px;
+
+  border-top: 1px solid #ddd;
+}
+
+
+/* =========================
+   PSEUDO ELEMENT
+========================= */
+
+h1::first-letter {
+  font-style: normal;
+  margin-right: 6px;
+}
