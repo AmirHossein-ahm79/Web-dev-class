@@ -1,0 +1,302 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* PAGE */
+body {
+  color: #333;
+  font-family: Arial, sans-serif;
+  border-top: 8px solid #6c5ce7;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* MAIN HEADER */
+.main-header {
+  background-color: #f1efff;
+  padding: 24px 35px 4px;
+  margin-top: 25px;
+  margin-bottom: 45px;
+  border-bottom: 2px solid #d8d2ff;
+}
+
+h1 {
+  color: #4b3fbf;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+h1::first-letter {
+  font-style: normal;
+  margin-right: 6px;
+}
+
+.go-top {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #f1efff;
+  color: #4b3fbf;
+  border: 2px solid #d8d2ff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+}
+
+.go-top:hover {
+  background-color: #6c5ce7;
+  color: #fff;
+  border-color: #6c5ce7;
+}
+
+/* NAVIGATION */
+nav {
+  font-size: 17px;
+}
+
+nav a:link,
+nav a:visited {
+  color: #4b3fbf;
+  text-decoration: none;
+  margin-right: 24px;
+  padding: 6px 10px;
+  display: inline-block;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+nav a:hover {
+  color: #e17055;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+nav a:active {
+  background-color: #333;
+  color: white;
+  font-style: italic;
+}
+
+/* ARTICLE */
+article {
+  margin-bottom: 50px;
+}
+
+article header {
+  margin-bottom: 35px;
+}
+
+h2 {
+  color: #4b3fbf;
+  font-size: 30px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* Small label above the title */
+h2::after {
+  content: "HTML";
+  background-color: #ffeaa7;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 9px;
+  display: inline-block;
+  position: absolute;
+  top: -14px;
+  right: 10px;
+}
+
+/* AUTHOR */
+#author-image {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+article header p {
+  font-style: italic;
+  font-size: 17px;
+  display: inline-block;
+}
+
+/* post image */
+.post-img {
+  width: 100%;
+  height: auto;
+  margin-top: 22px;
+}
+
+/* ARTICLE TEXT */
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+article h3 {
+  color: #6c5ce7;
+  font-size: 28px;
+  margin-top: 38px;
+  margin-bottom: 18px;
+}
+
+/* LISTS */
+ul,
+ol {
+  margin-left: 45px;
+  margin-bottom: 22px;
+}
+
+li {
+  font-size: 19px;
+  margin-bottom: 11px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* mdn ref */
+.mdn-ref:link,
+.mdn-ref:visited {
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+.mdn-ref:hover {
+  color: #e17055;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.mdn-ref:active {
+  background-color: #222;
+  color: white;
+  font-style: italic;
+}
+
+/* ASIDE */
+aside {
+  background-color: #f6f6f6;
+  border-top: 4px solid #6c5ce7;
+  border-bottom: 4px solid #6c5ce7;
+  padding: 35px 20px;
+  margin-bottom: 45px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #4b3fbf;
+}
+
+.recommended {
+  list-style: none;
+  margin-left: 0;
+}
+
+.recommended li {
+  margin-bottom: 28px;
+}
+
+.recommended li img {
+  width: 75px;
+  height: 75px;
+  margin-right: 7px;
+  vertical-align: -23px;
+}
+
+.recommended div {
+  display: inline-block;
+}
+
+.recommended a:link,
+.recommended a:visited {
+  color: #4b3fbf;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.recommended a:hover {
+  color: #e17055;
+  text-decoration: underline;
+}
+
+/* Author names */
+.recommended p {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+/* FOOTER */
+footer {
+  font-size: 15px;
+  color: #777;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-top: 1px solid #ddd;
+}
+
+/* using floats */
+
+h1 {
+  float: left;
+}
+nav {
+  float: right;
+}
+
+.main-header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+article {
+  width: 830px;
+  float: left;
+}
+
+aside {
+  width: 330px;
+  float: right;
+}
+aside h4 {
+  font-size: 19px;
+}
+
+aside a,
+aside p {
+  font-size: 14px !important;
+}
+
+aside ul {
+  margin-left: 0;
+}
+
+footer {
+  clear: both;
+  width: 830px;
+}

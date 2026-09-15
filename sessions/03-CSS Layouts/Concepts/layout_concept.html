@@ -1,0 +1,1558 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>North — Modern Single Page</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #fff;
+      --surface-2: #f1f3f6;
+      --text: #14171c;
+      --muted: #69717d;
+      --line: #e4e7ec;
+      --accent: #17191d;
+      --accent-soft: #eceef2;
+      --success: #1c9b66;
+
+      --page-x: clamp(18px, 4vw, 58px);
+      --section-y: clamp(64px, 9vw, 118px);
+
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 11px;
+
+      --shadow-sm: 0 10px 28px rgba(22, 28, 38, .05);
+      --shadow-lg: 0 28px 70px rgba(22, 28, 38, .08);
+
+      --ease: cubic-bezier(.22,.75,.18,1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(94, 112, 255, .08), transparent 27%),
+        radial-gradient(circle at 100% 20%, rgba(22, 25, 31, .055), transparent 28%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* =========================================================
+       SHARED LAYOUT UTILITIES
+       ========================================================= */
+
+    .container {
+      width: min(1240px, calc(100% - (var(--page-x) * 2)));
+      margin-inline: auto;
+    }
+
+    .surface {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(228,231,236,.85);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .eyebrow {
+      color: #737c88;
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 10px;
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.7rem, 3.8vw, 2.75rem);
+      line-height: 1.06;
+      letter-spacing: -.045em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    /* =========================================================
+       SITE HEADER
+       Header itself is a layout: brand + nav + actions.
+       ========================================================= */
+
+    .site-header {
+      padding-top: 18px;
+    }
+
+    .header-shell {
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 11px 14px 11px 18px;
+      border-radius: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #17191d, #515861);
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 0;
+    }
+
+    .brand-text strong {
+      font-size: .94rem;
+      letter-spacing: -.025em;
+    }
+
+    .brand-text span {
+      color: #8a929e;
+      font-size: .68rem;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .nav-link {
+      padding: 9px 11px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: .84rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .login-link {
+      color: var(--muted);
+      font-size: .84rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 10px 12px;
+    }
+
+    .header-cta {
+      min-height: 42px;
+      padding: 0 15px;
+      border: 0;
+      border-radius: 11px;
+      color: white;
+      background: var(--accent);
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 9px 22px rgba(23,25,29,.15);
+    }
+
+    .header-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 13px 26px rgba(23,25,29,.2);
+    }
+
+    /* =========================================================
+       HERO
+       Main section layout = copy + visual.
+       Internal layouts are deliberately spaced apart so the
+       visualization outlines remain readable.
+       ========================================================= */
+
+    .hero {
+      padding-block: 56px 86px;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(390px, .98fr);
+      align-items: center;
+      gap: clamp(28px, 6vw, 78px);
+      padding: clamp(24px, 5vw, 58px);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: center;
+      gap: 22px;
+      min-width: 0;
+      padding-right: 12px;
+    }
+
+    .hero-title {
+      max-width: 700px;
+      font-size: clamp(2.8rem, 7vw, 5.9rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+    }
+
+    .hero-title span {
+      color: #777f89;
+    }
+
+    .hero-description {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: clamp(.95rem, 1.4vw, 1.08rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      min-height: 46px;
+      padding: 0 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: .83rem;
+      font-weight: 800;
+      transition: transform .18s ease;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary-btn {
+      border: 1px solid #202329;
+      color: #fff;
+      background: #202329;
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #fff;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #7d8692;
+      font-size: .76rem;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(28,155,102,.11);
+    }
+
+    .hero-visual {
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 26px;
+      background: #eef1f5;
+      border: 1px solid #e1e5eb;
+    }
+
+    .visual-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 38px;
+      padding: 0 10px;
+    }
+
+    .window-dots {
+      display: inline-flex;
+      gap: 5px;
+    }
+
+    .window-dots i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #b7bec8;
+    }
+
+    .visual-toolbar span {
+      color: #8a939f;
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      grid-template-rows: minmax(150px, 1fr) 115px;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(36,44,58,.09);
+    }
+
+    .dashboard-main {
+      display: grid;
+      gap: 12px;
+      grid-row: span 2;
+      padding: 14px;
+      border-radius: 15px;
+      background: #f7f8fa;
+      border: 1px solid #edf0f3;
+    }
+
+    .metric-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .metric-copy {
+      display: grid;
+      gap: 3px;
+    }
+
+    .metric-copy small {
+      color: #8a939f;
+      font-size: .67rem;
+    }
+
+    .metric-copy strong {
+      font-size: 1.65rem;
+      letter-spacing: -.04em;
+    }
+
+    .metric-change {
+      padding: 5px 7px;
+      border-radius: 8px;
+      color: #168254;
+      background: #eaf8f1;
+      font-size: .65rem;
+      font-weight: 800;
+    }
+
+    .chart {
+      position: relative;
+      min-height: 125px;
+      margin-top: auto;
+      border-radius: 11px;
+      background:
+        linear-gradient(to bottom, transparent 24%, #e7ebef 25%, transparent 26%) 0 0 / 100% 33.333%,
+        linear-gradient(to right, transparent 19%, #eef1f4 20%, transparent 21%) 0 0 / 25% 100%,
+        #fff;
+      overflow: hidden;
+    }
+
+    .chart svg {
+      position: absolute;
+      inset: 17px 10px 13px;
+      width: calc(100% - 20px);
+      height: calc(100% - 30px);
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: #5660ff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .dashboard-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-panel {
+      display: grid;
+      gap: 8px;
+      padding: 13px;
+      border-radius: 15px;
+      border: 1px solid #edf0f3;
+      background: #fff;
+    }
+
+    .mini-panel strong {
+      font-size: .83rem;
+    }
+
+    .mini-panel small {
+      color: #8a939f;
+      font-size: .67rem;
+    }
+
+    .bars {
+      display: grid;
+      gap: 7px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bar label {
+      color: #838c98;
+      font-size: .61rem;
+    }
+
+    .bar-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #edf0f3;
+    }
+
+    .bar-track span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: #575fff;
+    }
+
+    /* =========================================================
+       FEATURE SECTION
+       ========================================================= */
+
+    .features {
+      padding-block: var(--section-y);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+      min-height: 252px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 44px rgba(22,28,38,.08);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--surface-2);
+      color: #22272e;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .feature-content {
+      display: grid;
+      align-content: start;
+      gap: 7px;
+      padding-right: 8px;
+    }
+
+    .feature-content h3 {
+      font-size: 1rem;
+      letter-spacing: -.025em;
+    }
+
+    .feature-content p {
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .feature-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+      color: #848c98;
+      font-size: .7rem;
+      font-weight: 750;
+    }
+
+    /* =========================================================
+       WORK SECTION
+       ========================================================= */
+
+    .work {
+      padding-block: var(--section-y);
+    }
+
+    .work-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 490px;
+      padding: 14px;
+      border-radius: var(--radius-xl);
+    }
+
+    .project-image {
+      position: relative;
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow: hidden;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.8), transparent 28%),
+        linear-gradient(140deg, #e7ebef, #f5f6f7 45%, #dde2e7);
+    }
+
+    .project-mockup {
+      width: min(74%, 430px);
+      aspect-ratio: 1.15;
+      display: grid;
+      grid-template-columns: 24% 1fr;
+      padding: 11px;
+      gap: 9px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 28px 60px rgba(35,42,52,.18);
+      transform: rotate(-3deg);
+    }
+
+    .mockup-nav {
+      display: grid;
+      align-content: start;
+      gap: 7px;
+      padding: 10px;
+      border-radius: 11px;
+      background: #17191d;
+    }
+
+    .mockup-nav i,
+    .mockup-row span {
+      display: block;
+      border-radius: 6px;
+      background: #2c3138;
+    }
+
+    .mockup-nav i:nth-child(1) {
+      width: 72%;
+      height: 8px;
+      background: #fff;
+      margin-bottom: 6px;
+    }
+
+    .mockup-nav i:not(:first-child) {
+      height: 6px;
+      opacity: .7;
+    }
+
+    .mockup-content {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 9px;
+      padding: 8px;
+    }
+
+    .mockup-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .mockup-heading span {
+      display: block;
+      height: 8px;
+      width: 28%;
+      border-radius: 6px;
+      background: #cfd4db;
+    }
+
+    .mockup-heading span:last-child {
+      width: 16%;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .mockup-tile {
+      border-radius: 9px;
+      background: linear-gradient(145deg, #edf0f3, #dfe4e9);
+    }
+
+    .mockup-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .mockup-row span {
+      height: 15px;
+      background: #e6e9ed;
+    }
+
+    .project-info {
+      display: grid;
+      gap: 8px;
+      padding: 17px 8px 6px;
+    }
+
+    .project-info-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .project-info h3 {
+      font-size: 1.05rem;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .project-link {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-decoration: none;
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .process-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      min-height: 490px;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+    }
+
+    .process-header {
+      display: grid;
+      gap: 6px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-header h3 {
+      font-size: 1.1rem;
+    }
+
+    .process-header p {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .process-list {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #edf0f3;
+    }
+
+    .process-item:last-child {
+      border-bottom: 0;
+    }
+
+    .process-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--surface-2);
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .process-copy {
+      display: grid;
+      gap: 2px;
+    }
+
+    .process-copy strong {
+      font-size: .82rem;
+    }
+
+    .process-copy span {
+      color: var(--muted);
+      font-size: .72rem;
+    }
+
+    .process-arrow {
+      color: #a1a8b2;
+      font-size: .8rem;
+    }
+
+    /* =========================================================
+       TESTIMONIAL / QUOTE SECTION
+       ========================================================= */
+
+    .quote-section {
+      padding-block: var(--section-y);
+    }
+
+    .quote-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+      gap: 16px;
+      padding: clamp(25px, 5vw, 48px);
+      border-radius: var(--radius-xl);
+    }
+
+    .quote-content {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+    }
+
+    blockquote {
+      max-width: 800px;
+      font-size: clamp(1.55rem, 3.2vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .quote-author {
+      display: grid;
+      gap: 2px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .quote-author strong {
+      color: var(--text);
+      font-size: .8rem;
+    }
+
+    .quote-side {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 20px;
+      border-radius: 18px;
+      background: var(--surface-2);
+    }
+
+    .quote-side strong {
+      font-size: .92rem;
+    }
+
+    .quote-side p {
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .site-footer {
+      padding-block: 20px 28px;
+    }
+
+    .footer-shell {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 22px;
+      border-radius: 18px;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 3px;
+    }
+
+    .footer-brand strong {
+      font-size: .84rem;
+    }
+
+    .footer-brand span {
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      color: #89919c;
+      font-size: .68rem;
+      text-align: right;
+    }
+
+    /* =========================================================
+       VISUALIZATION MODE
+       =========================================================
+
+       Levels:
+       1) major page boxes
+       2) sections / component groups
+       3) components
+       4) internal layouts
+
+       Margin is intentionally kept between nested elements.
+       Outline offsets are also used so borders do not visually
+       merge into one another.
+       ========================================================= */
+
+    .layout-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 15px 0 10px;
+      border: 1px solid #cfd5ff;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, #4f5eff, #6858dc);
+      cursor: pointer;
+      box-shadow: 0 15px 35px rgba(68,79,215,.23);
+      font-size: .79rem;
+      font-weight: 850;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .layout-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(68,79,215,.28);
+    }
+
+    .toggle-icon {
+      position: relative;
+      width: 27px;
+      height: 27px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.6);
+    }
+
+    .toggle-icon::before,
+    .toggle-icon::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 4px;
+    }
+
+    .toggle-icon::before {
+      inset: 5px;
+    }
+
+    .toggle-icon::after {
+      inset: 9px;
+    }
+
+    body.visualize .viz-target {
+      position: relative;
+    }
+
+    /* Main page-level boxes */
+    body.visualize .v-page {
+      outline: 3px solid #4f5eff;
+      outline-offset: 8px;
+    }
+
+    /* Section-level boxes */
+    body.visualize .v-section {
+      outline: 2px dashed #7c3aed;
+      outline-offset: 6px;
+      border-radius: 8px;
+    }
+
+    /* Component-level boxes */
+    body.visualize .v-component {
+      outline: 2px dotted #f59e0b;
+      outline-offset: 5px;
+      border-radius: 7px;
+    }
+
+    /* Internal layout boxes */
+    body.visualize .v-internal {
+      outline: 1.5px solid #ec4899;
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    /* Visualization intentionally shows outlines only.
+       Labels are not rendered so the hierarchy stays visually clean. */
+    .viz-target[data-viz-label]::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1040px) {
+      .header-shell {
+        grid-template-columns: 1fr auto;
+      }
+
+      .main-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 4px 2px 0;
+      }
+
+      .hero-shell,
+      .work-layout,
+      .quote-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .quote-side {
+        min-height: 150px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --page-x: 12px;
+        --section-y: 66px;
+      }
+
+      .header-shell {
+        gap: 12px;
+        padding: 10px;
+      }
+
+      .login-link {
+        display: none;
+      }
+
+      .header-cta {
+        padding-inline: 12px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-shell {
+        padding: 20px;
+        gap: 28px;
+      }
+
+      .hero-copy {
+        padding-right: 0;
+      }
+
+      .hero-title {
+        font-size: clamp(2.65rem, 13vw, 4.3rem);
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .dashboard-main {
+        grid-row: auto;
+      }
+
+      .dashboard-side {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card,
+      .process-card {
+        min-height: 0;
+      }
+
+      .project-image {
+        min-height: 260px;
+      }
+
+      .project-mockup {
+        width: 82%;
+      }
+
+      .footer-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+
+      .viz-legend {
+        left: 12px;
+        bottom: 74px;
+        max-width: calc(100vw - 24px);
+      }
+
+      .layout-toggle {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .site-header {
+        padding-top: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header v-page viz-target" data-viz-label="Header">
+    <div class="container">
+      <div class="header-shell surface">
+
+        <a class="brand v-component viz-target" data-viz-label="Brand" href="#home">
+          <span class="brand-mark">N</span>
+
+          <span class="brand-text v-internal viz-target" data-viz-label="Brand Content">
+            <strong>North Studio</strong>
+            <span>Digital products</span>
+          </span>
+        </a>
+
+        <nav class="main-nav v-component viz-target" data-viz-label="Navigation">
+          <a class="nav-link active" href="#home">Home</a>
+          <a class="nav-link" href="#services">Services</a>
+          <a class="nav-link" href="#work">Work</a>
+          <a class="nav-link" href="#about">About</a>
+        </nav>
+
+        <div class="header-actions v-component viz-target" data-viz-label="Header Actions">
+          <a class="login-link" href="#about">Contact</a>
+          <button class="header-cta" type="button"
+            onclick="document.querySelector('#work').scrollIntoView({behavior:'smooth'})">
+            See our work
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- HERO -->
+    <section class="hero v-section viz-target" data-viz-label="Hero Section">
+      <div class="container">
+        <div class="hero-shell surface">
+
+          <div class="hero-copy v-component viz-target" data-viz-label="Hero Content">
+            <span class="eyebrow">Independent digital studio</span>
+
+            <h1 class="hero-title">
+              We build calm,
+              <span>useful products.</span>
+            </h1>
+
+            <p class="hero-description">
+              Strategy, design and engineering for teams that want digital
+              experiences that feel clear, thoughtful and effortless.
+            </p>
+
+            <div class="hero-actions v-internal viz-target" data-viz-label="Hero Actions">
+              <button class="primary-btn" type="button"
+                onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">
+                Start a conversation
+              </button>
+
+              <button class="secondary-btn" type="button"
+                onclick="document.querySelector('#work').scrollIntoView({behavior:'smooth'})">
+                Explore projects
+              </button>
+            </div>
+
+            <div class="hero-note v-internal viz-target" data-viz-label="Hero Note">
+              <span class="status-dot"></span>
+              Currently taking on selected projects
+            </div>
+          </div>
+
+          <div class="hero-visual v-component viz-target" data-viz-label="Hero Visual">
+            <div class="visual-toolbar v-internal viz-target" data-viz-label="Toolbar">
+              <div class="window-dots">
+                <i></i><i></i><i></i>
+              </div>
+              <span>overview / dashboard</span>
+            </div>
+
+            <div class="dashboard v-internal viz-target" data-viz-label="Dashboard Layout">
+              <div class="dashboard-main v-component viz-target" data-viz-label="Metric Panel">
+                <div class="metric-header v-internal viz-target" data-viz-label="Metric Header">
+                  <div class="metric-copy">
+                    <small>Monthly active users</small>
+                    <strong>48.2k</strong>
+                  </div>
+                  <span class="metric-change">+18.4%</span>
+                </div>
+
+                <div class="chart v-internal viz-target" data-viz-label="Chart">
+                  <svg viewBox="0 0 500 170" preserveAspectRatio="none" aria-hidden="true">
+                    <path
+                      class="chart-line"
+                      d="M4 138 C42 126 60 129 86 116 S138 119 163 95 S210 112 233 84
+                         S278 91 302 63 S352 68 375 78 S425 35 448 47 S474 28 496 17" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="dashboard-side">
+                <div class="mini-panel v-component viz-target" data-viz-label="Mini Card">
+                  <strong>Conversion</strong>
+                  <small>Last 30 days</small>
+                  <div class="bars v-internal viz-target" data-viz-label="Bars">
+                    <div class="bar">
+                      <label>Search</label>
+                      <div class="bar-track"><span style="width:82%"></span></div>
+                    </div>
+                    <div class="bar">
+                      <label>Social</label>
+                      <div class="bar-track"><span style="width:61%"></span></div>
+                    </div>
+                    <div class="bar">
+                      <label>Direct</label>
+                      <div class="bar-track"><span style="width:73%"></span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mini-panel v-component viz-target" data-viz-label="Mini Card">
+                  <strong>Retention</strong>
+                  <small>Weekly cohort</small>
+                  <div class="bar-track">
+                    <span style="width:68%"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="features v-section viz-target" id="services" data-viz-label="Services Section">
+      <div class="container">
+        <div class="section-heading v-component viz-target" data-viz-label="Section Header">
+          <span class="eyebrow">What we do</span>
+          <h2>One team from first idea to final interface.</h2>
+          <p>
+            Small, focused teams work better when strategy, design and
+            implementation share the same table.
+          </p>
+        </div>
+
+        <div class="feature-grid v-component viz-target" data-viz-label="Feature Grid">
+          <article class="feature-card surface v-component viz-target" data-viz-label="Feature Card">
+            <div class="feature-icon">01</div>
+
+            <div class="feature-content v-internal viz-target" data-viz-label="Card Content">
+              <h3>Product Strategy</h3>
+              <p>
+                Find the simplest product direction, prioritize the right
+                problems and turn ideas into a practical roadmap.
+              </p>
+            </div>
+
+            <div class="feature-meta v-internal viz-target" data-viz-label="Card Footer">
+              <span>Research</span>
+              <span>Roadmaps</span>
+            </div>
+          </article>
+
+          <article class="feature-card surface v-component viz-target" data-viz-label="Feature Card">
+            <div class="feature-icon">02</div>
+
+            <div class="feature-content v-internal viz-target" data-viz-label="Card Content">
+              <h3>Interface Design</h3>
+              <p>
+                Create clear systems, expressive interfaces and responsive
+                experiences that are easy to understand and use.
+              </p>
+            </div>
+
+            <div class="feature-meta v-internal viz-target" data-viz-label="Card Footer">
+              <span>UX / UI</span>
+              <span>Systems</span>
+            </div>
+          </article>
+
+          <article class="feature-card surface v-component viz-target" data-viz-label="Feature Card">
+            <div class="feature-icon">03</div>
+
+            <div class="feature-content v-internal viz-target" data-viz-label="Card Content">
+              <h3>Web Engineering</h3>
+              <p>
+                Turn polished designs into fast, maintainable web products
+                with modern front-end architecture.
+              </p>
+            </div>
+
+            <div class="feature-meta v-internal viz-target" data-viz-label="Card Footer">
+              <span>Frontend</span>
+              <span>Web Apps</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work v-section viz-target" id="work" data-viz-label="Work Section">
+      <div class="container">
+        <div class="section-heading v-component viz-target" data-viz-label="Section Header">
+          <span class="eyebrow">Selected work</span>
+          <h2>Quiet interfaces with a lot going on underneath.</h2>
+        </div>
+
+        <div class="work-layout v-component viz-target" data-viz-label="Work Layout">
+
+          <article class="project-card surface v-component viz-target" data-viz-label="Project Card">
+            <div class="project-image v-internal viz-target" data-viz-label="Project Preview">
+              <div class="project-mockup">
+                <div class="mockup-nav v-component viz-target" data-viz-label="Mockup Sidebar">
+                  <i></i>
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+
+                <div class="mockup-content v-internal viz-target" data-viz-label="Mockup Content">
+                  <div class="mockup-heading v-internal viz-target" data-viz-label="Mockup Header">
+                    <span></span><span></span>
+                  </div>
+
+                  <div class="mockup-grid v-component viz-target" data-viz-label="Mockup Grid">
+                    <div class="mockup-tile"></div>
+                    <div class="mockup-tile"></div>
+                    <div class="mockup-tile"></div>
+                    <div class="mockup-tile"></div>
+                  </div>
+
+                  <div class="mockup-row v-internal viz-target" data-viz-label="Mockup Footer">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <div class="project-info-top v-internal viz-target" data-viz-label="Project Header">
+                <div>
+                  <span class="eyebrow">Atlas / 2026</span>
+                  <h3>Operations dashboard</h3>
+                </div>
+                <a class="project-link" href="#about" aria-label="Open project">↗</a>
+              </div>
+
+              <p>
+                A modular workspace for teams managing complex operations.
+              </p>
+            </div>
+          </article>
+
+          <aside class="process-card surface v-component viz-target" data-viz-label="Process Panel">
+            <div class="process-header v-internal viz-target" data-viz-label="Process Header">
+              <h3>A simple process</h3>
+              <p>Focused enough to move quickly, structured enough to stay aligned.</p>
+            </div>
+
+            <div class="process-list v-internal viz-target" data-viz-label="Process List">
+              <div class="process-item">
+                <span class="process-number">01</span>
+                <div class="process-copy">
+                  <strong>Understand</strong>
+                  <span>Goals, users and constraints</span>
+                </div>
+                <span class="process-arrow">→</span>
+              </div>
+
+              <div class="process-item">
+                <span class="process-number">02</span>
+                <div class="process-copy">
+                  <strong>Design</strong>
+                  <span>Flows, structure and interface</span>
+                </div>
+                <span class="process-arrow">→</span>
+              </div>
+
+              <div class="process-item">
+                <span class="process-number">03</span>
+                <div class="process-copy">
+                  <strong>Build</strong>
+                  <span>Responsive, production-ready code</span>
+                </div>
+                <span class="process-arrow">→</span>
+              </div>
+
+              <div class="process-item">
+                <span class="process-number">04</span>
+                <div class="process-copy">
+                  <strong>Refine</strong>
+                  <span>Launch, learn and iterate</span>
+                </div>
+                <span class="process-arrow">→</span>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / QUOTE -->
+    <section class="quote-section v-section viz-target" id="about" data-viz-label="About Section">
+      <div class="container">
+        <div class="quote-shell surface">
+
+          <div class="quote-content v-component viz-target" data-viz-label="Quote Content">
+            <span class="eyebrow">A note from the studio</span>
+
+            <blockquote>
+              “Good digital design should make the important things feel
+              obvious — not impressive.”
+            </blockquote>
+
+            <div class="quote-author v-internal viz-target" data-viz-label="Quote Author">
+              <strong>Elena Park</strong>
+              <span>Founder, North Studio</span>
+            </div>
+          </div>
+
+          <div class="quote-side v-component viz-target" data-viz-label="About Card">
+            <strong>Working globally</strong>
+            <p>
+              Product teams, founders and ambitious organizations across
+              different time zones and industries.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer v-page viz-target" data-viz-label="Footer">
+    <div class="container">
+      <div class="footer-shell surface">
+
+        <div class="footer-brand v-internal viz-target" data-viz-label="Footer Brand">
+          <strong>North Studio</strong>
+          <span>Digital products, thoughtfully made.</span>
+        </div>
+
+        <nav class="footer-links v-component viz-target" data-viz-label="Footer Links">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <div class="footer-copy v-internal viz-target" data-viz-label="Footer Copyright">
+          © 2026 North Studio
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Visualization Controls -->
+  <button
+    class="layout-toggle"
+    id="layoutToggle"
+    type="button"
+    aria-pressed="false"
+    title="Toggle layout visualization"
+  >
+    <span class="toggle-icon" aria-hidden="true"></span>
+    <span id="toggleLabel">Visualize Layout</span>
+  </button>
+
+
+  <script>
+    const toggle = document.getElementById("layoutToggle");
+    const toggleLabel = document.getElementById("toggleLabel");
+
+    function setVisualization(active) {
+      document.body.classList.toggle("visualize", active);
+      toggle.setAttribute("aria-pressed", String(active));
+      toggleLabel.textContent = active ? "Hide Layout" : "Visualize Layout";
+    }
+
+    toggle.addEventListener("click", () => {
+      setVisualization(!document.body.classList.contains("visualize"));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const tag = document.activeElement?.tagName;
+      const typing =
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        document.activeElement?.isContentEditable;
+
+      if (!typing && event.key.toLowerCase() === "l") {
+        setVisualization(!document.body.classList.contains("visualize"));
+      }
+
+      if (event.key === "Escape") {
+        setVisualization(false);
+      }
+    });
+
+    // Highlight the current page section in the top navigation.
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const navLinks = [...document.querySelectorAll(".main-nav .nav-link")];
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+
+        navLinks.forEach(link => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${visible.target.id}`
+          );
+        });
+      },
+      {
+        rootMargin: "-38% 0px -52% 0px",
+        threshold: [0.05, 0.2, 0.4]
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
