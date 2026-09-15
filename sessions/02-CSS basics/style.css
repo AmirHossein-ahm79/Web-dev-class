@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* PAGE */
 body {
   color: #333;
@@ -43,14 +47,23 @@ h1::first-letter {
 
 .go-top {
   display: inline-block;
-  padding: 8px 20px;
-  background-color: #bdb8b8;
-  border-radius: 5px;
+  padding: 10px 18px;
+  background-color: #f1efff;
+  color: #4b3fbf;
+  border: 2px solid #d8d2ff;
+  border-radius: 8px;
   text-decoration: none;
-  color: #222;
+  font-size: 15px;
+  font-weight: bold;
   position: absolute;
-  bottom: 100px;
-  right: 100px;
+  bottom: 35px;
+  right: 35px;
+}
+
+.go-top:hover {
+  background-color: #6c5ce7;
+  color: #fff;
+  border-color: #6c5ce7;
 }
 
 /* NAVIGATION */
@@ -94,7 +107,7 @@ article header {
 
 h2 {
   color: #4b3fbf;
-  font-size: 38px;
+  font-size: 30px;
   margin-bottom: 22px;
   position: relative;
 }
