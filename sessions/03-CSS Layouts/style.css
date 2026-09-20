@@ -262,7 +262,7 @@ footer {
 
 /* using floats */
 
-h1 {
+/* h1 {
   float: left;
 }
 nav {
@@ -298,5 +298,48 @@ aside ul {
 
 footer {
   clear: both;
+  width: 830px;
+} */
+
+/* using flexbox */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+.main-header h1 {
+  margin-bottom: 0;
+}
+
+.content {
+  display: flex;
+  column-gap: 40px;
+  align-items: flex-start;
+}
+
+.content article {
+  flex-basis: 830px;
+}
+
+.content aside {
+  flex-basis: 330px;
+}
+
+aside h4 {
+  font-size: 19px;
+}
+
+aside a,
+aside p {
+  font-size: 14px !important;
+}
+
+aside ul {
+  margin-left: 0;
+}
+
+footer {
   width: 830px;
 }
