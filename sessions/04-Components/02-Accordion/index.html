@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Editorial Accordion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="accordion">
+      <div class="header">
+        <div class="label">Learn More</div>
+
+        <h1>Frequently Asked Questions</h1>
+
+        <p>
+          Everything you need to know about HTML, CSS and JavaScript before
+          starting your journey.
+        </p>
+      </div>
+
+      <!-- Item 1 -->
+
+      <div class="accordion-item">
+        <button class="accordion-button">
+          <span class="number"> 01 </span>
+
+          <span class="question"> What is HTML? </span>
+
+          <span class="icon"> + </span>
+        </button>
+
+        <div class="accordion-content">
+          HTML is the standard markup language used to create the structure and
+          content of websites. It defines elements such as headings, paragraphs,
+          images and links.
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+
+      <div class="accordion-item">
+        <button class="accordion-button">
+          <span class="number"> 02 </span>
+
+          <span class="question"> What is CSS? </span>
+
+          <span class="icon"> + </span>
+        </button>
+
+        <div class="accordion-content">
+          CSS controls the visual appearance of a website. It is responsible for
+          colors, spacing, typography, positioning and the overall visual
+          design.
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+
+      <div class="accordion-item">
+        <button class="accordion-button">
+          <span class="number"> 03 </span>
+
+          <span class="question"> What is JavaScript? </span>
+
+          <span class="icon"> + </span>
+        </button>
+
+        <div class="accordion-content">
+          JavaScript adds behavior and interactivity to websites. It allows you
+          to react to user actions, manipulate the DOM and create dynamic
+          interfaces.
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+
+      <div class="accordion-item">
+        <button class="accordion-button">
+          <span class="number"> 04 </span>
+
+          <span class="question">
+            How do these technologies work together?
+          </span>
+
+          <span class="icon"> + </span>
+        </button>
+
+        <div class="accordion-content">
+          HTML creates the structure, CSS controls the appearance and JavaScript
+          adds behavior. Together they form the foundation of modern front-end
+          development.
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
