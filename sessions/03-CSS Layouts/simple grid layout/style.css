@@ -1,0 +1,124 @@
+/* =====================================================
+           BASE
+        ===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* =====================================================
+           PAGE
+        ===================================================== */
+
+.page {
+  /* YOUR GRID CSS */
+}
+
+/* =====================================================
+           GENERIC COMPONENT STYLE
+        ===================================================== */
+
+.header,
+.sidebar,
+.main,
+.footer,
+.card,
+.panel,
+.widget,
+.item {
+  border: 2px solid black;
+  padding: 16px;
+}
+
+.header {
+  background-color: #adb5bd;
+  min-height: 80px;
+}
+
+.sidebar {
+  background-color: #ff6b6b;
+  min-height: 300px;
+}
+
+.main {
+  background-color: #cc5de8;
+  min-height: 500px;
+}
+
+.footer {
+  background-color: #51cf66;
+  min-height: 60px;
+}
+
+/* =====================================================
+           MAIN INTERNAL LAYOUT
+        ===================================================== */
+
+.main {
+  /* YOUR GRID CSS */
+}
+
+/* =====================================================
+           CARDS
+        ===================================================== */
+
+.cards {
+  background-color: #845ef7;
+  /* YOUR GRID CSS */
+}
+
+.card {
+  background-color: #5c7cfa;
+  min-height: 120px;
+}
+
+/* =====================================================
+           CONTENT AREA
+        ===================================================== */
+
+.content {
+  background-color: #ff922b;
+  /* YOUR GRID CSS */
+}
+
+.panel {
+  min-height: 180px;
+}
+
+/* =====================================================
+           WIDGET AREA
+        ===================================================== */
+
+.widgets {
+  background-color: #339af0;
+  /* YOUR GRID CSS */
+}
+
+.widget {
+  background-color: #fcc419;
+  min-height: 100px;
+}
+
+/* =====================================================
+           EXTRA ITEMS
+        ===================================================== */
+
+.items {
+  background-color: #22b8cf;
+  /* YOUR GRID CSS */
+}
+
+.item {
+  background-color: #20c997;
+  min-height: 80px;
+}
