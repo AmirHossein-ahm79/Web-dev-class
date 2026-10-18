@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+
+    <title>Skayora</title>
+  </head>
+  <body>
+    <header class="header">
+      <!-- navigation -->
+      <div class="hero-nav-wrapper">
+        <a href="#" class="nav-logo" aria-label="Skayora Home">
+          <img src="img/logo.png" alt="Skayora Logo" />
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+        >
+          <i class="ti ti-menu-2" aria-hidden="true"></i>
+        </button>
+
+        <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+          <a href="#destinations">Discover</a>
+          <a href="#journeys">Journeys</a>
+          <a href="#travel-style">Travel Style</a>
+          <a href="#inspirations">Inspirations</a>
+          <a href="#offers">Offers</a>
+          <a href="#about">About Us</a>
+        </nav>
+
+        <a href="#booking" class="btn-book-trip">Book a Trip</a>
+      </div>
+
+      <!-- hero text -->
+      <div class="hero-text">
+        <span>Explore &dash; Discover &dash; Belong</span>
+        <h1 class="heading-primary">Your Next Adventure With Skayora</h1>
+        <p>
+          Handpicked destionations and seamless travel experiences for curious
+          travelers.
+        </p>
+      </div>
+
+      <form class="hero-form">
+        <div class="input-wrapper">
+          <i class="ti ti-map-pin"></i>
+          <div>
+            <label for="where">Where to?</label>
+            <input id="where" type="text" placeholder="Search destionations" />
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <i class="ti ti-calendar-week"></i>
+          <div>
+            <label for="dates">Dates</label>
+            <div class="date-field">
+              <input id="dates" type="date" required />
+              <span class="date-placeholder">Select dates</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <i class="ti ti-users"></i>
+          <div>
+            <label for="guests">Guests</label>
+            <input id="guests" type="number" placeholder="Add guests" />
+          </div>
+        </div>
+        <button class="btn-search" type="submit">
+          Search <i class="ti ti-search"></i>
+        </button>
+      </form>
+    </header>
+
+    <main class="main">
+      <!-- stats -->
+      <section class="section-stats">
+        <div class="container">
+          <h2 class="heading-secondary">Our Achievements</h2>
+
+          <div class="grid grid--4-cols">
+            <div class="stat-item">
+              <i class="ti ti-users-group"></i>
+              <span class="stat-number">10K+</span>
+              <p>Happy Travelers</p>
+            </div>
+
+            <div class="stat-item">
+              <i class="ti ti-map-pin"></i>
+              <span class="stat-number">100+</span>
+              <p>Destinations</p>
+            </div>
+
+            <div class="stat-item">
+              <i class="ti ti-star"></i>
+              <span class="stat-number">4.8/5</span>
+              <p>Customer Rating</p>
+            </div>
+
+            <div class="stat-item">
+              <i class="ti ti-heart-handshake"></i>
+              <span class="stat-number">15+</span>
+              <p>Years of Experience</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- featured tours -->
+      <section class="section-featured-tours">
+        <div class="container">
+          <div class="featured-tours-header">
+            <span>POPULAR PICKS</span>
+            <h2 class="heading-secondary">Featured Tours</h2>
+            <p>Handpicked journeys for unforgettable experiences.</p>
+          </div>
+
+          <div class="grid grid--3-cols featured-tour-grid">
+            <!--* Tour 1 *-->
+            <article class="featured-tour-card">
+              <div class="tour-image">
+                <img
+                  src="img/plans/fuji-mountain.webp"
+                  alt="Mount Fuji rising behind a traditional Japanese pagoda surrounded by cherry blossoms"
+                />
+                <span class="tour-duration">8 days</span>
+              </div>
+
+              <div class="tour-content">
+                <h3 class="tour-title">Japan Beyond the Ordinary</h3>
+
+                <p class="tour-location">
+                  <i class="ti ti-map-pin" aria-hidden="true"></i>
+                  Tokyo, Kyoto, Mount Fuji
+                </p>
+
+                <div class="tour-pricing">
+                  <div class="tour-price-row">
+                    <p class="tour-price">$2,624</p>
+                    <span class="tour-currency">USD</span>
+                    <del class="tour-old-price">$3,299</del>
+                    <span class="tour-discount">SAVE $675</span>
+                  </div>
+
+                  <p class="departs">
+                    <i class="ti ti-plane-departure" aria-hidden="true"></i>
+                    Departs on Nov 12, 2026
+                  </p>
+                </div>
+
+                <div class="tour-footer">
+                  <a href="#">Explore Trip</a>
+                  <button
+                    class="fav-tour"
+                    aria-label="Add Japan tour to favorites"
+                  >
+                    <i class="ti ti-heart" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!--* Tour 2 *-->
+            <article class="featured-tour-card">
+              <div class="tour-image">
+                <img
+                  src="img/plans/norway-Bergen.webp"
+                  alt="Colorful wooden waterfront houses in Bergen, Norway, with dramatic mountain scenery"
+                />
+                <span class="tour-duration">6 days</span>
+              </div>
+
+              <div class="tour-content">
+                <h3 class="tour-title">Norwegian Fjord Escape</h3>
+
+                <p class="tour-location">
+                  <i class="ti ti-map-pin" aria-hidden="true"></i>
+                  Bergen, Flam, Naeroyfjord
+                </p>
+
+                <div class="tour-pricing">
+                  <div class="tour-price-row">
+                    <p class="tour-price">$1,849</p>
+                    <span class="tour-currency">USD</span>
+                    <del class="tour-old-price">$2,399</del>
+                    <span class="tour-discount">SAVE $550</span>
+                  </div>
+
+                  <p class="departs">
+                    <i class="ti ti-plane-departure" aria-hidden="true"></i>
+                    Departs on May 18, 2027
+                  </p>
+                </div>
+
+                <div class="tour-footer">
+                  <a href="#">Explore Trip</a>
+                  <button
+                    class="fav-tour"
+                    aria-label="Add Norway tour to favorites"
+                  >
+                    <i class="ti ti-heart" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!--* Tour 3 *-->
+            <article class="featured-tour-card">
+              <div class="tour-image">
+                <img
+                  src="img/plans/kauai-hawaii.webp"
+                  alt="Lush green cliffs, tropical landscapes, and turquoise ocean along Kauai's Na Pali Coast in Hawaii"
+                />
+                <span class="tour-duration">7 days</span>
+              </div>
+
+              <div class="tour-content">
+                <h3 class="tour-title">Hawaii's Island Paradise</h3>
+
+                <p class="tour-location">
+                  <i class="ti ti-map-pin" aria-hidden="true"></i>
+                  Kauai, Na Pali Coast, Poipu
+                </p>
+
+                <div class="tour-pricing">
+                  <div class="tour-price-row">
+                    <p class="tour-price">$2,199</p>
+                    <span class="tour-currency">USD</span>
+                    <del class="tour-old-price">$2,799</del>
+                    <span class="tour-discount">SAVE $600</span>
+                  </div>
+
+                  <p class="departs">
+                    <i class="ti ti-plane-departure" aria-hidden="true"></i>
+                    Departs on Jun 10, 2027
+                  </p>
+                </div>
+
+                <div class="tour-footer">
+                  <a href="#">Explore Trip</a>
+                  <button
+                    class="fav-tour"
+                    aria-label="Add Hawaii tour to favorites"
+                  >
+                    <i class="ti ti-heart" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="featured-tours-action">
+            <a href="#">View All Tours</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- destinations -->
+      <section class="section-destinations" id="destinations">
+        <div class="container">
+          <div class="destinations-header">
+            <span>FIND YOUR NEXT ESCAPE</span>
+            <h2 class="heading-secondary">Explore the World</h2>
+            <p>
+              Discover extraordinary places and create unforgettable memories.
+            </p>
+          </div>
+
+          <div class="grid grid--2-cols destinations-grid">
+            <article class="destination-card">
+              <img src="img/destinations/japan.webp" alt="spring in Japan" />
+              <div class="destination-content">
+                <h3>Japan</h3>
+                <p>
+                  Ancient traditions, cherry blossoms, and vibrant modern
+                  cities.
+                </p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img
+                src="img/destinations/singapore.webp"
+                alt="Singapore skyline"
+              />
+              <div class="destination-content">
+                <h3>Singapore</h3>
+                <p>
+                  Futuristic skylines, lush gardens, and a vibrant cultural
+                  scene.
+                </p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img src="img/destinations/italy.webp" alt="Italy" />
+              <div class="destination-content">
+                <h3>Italy</h3>
+                <p>
+                  Historic cities, stunning coastlines, and authentic Italian
+                  cuisine.
+                </p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img
+                src="img/destinations/Bali-indonesia.webp"
+                alt="Tropical Bali with a traditional Balinese temple surrounded by water"
+              />
+              <div class="destination-content">
+                <h3>Bali</h3>
+                <p>
+                  Tropical beaches, lush rice terraces, and peaceful island
+                  escapes.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- why choose us -->
+      <section class="section-why-us" id="about">
+        <div class="container">
+          <div class="why-us-header">
+            <span>YOUR TRUSTED TRAVEL PARTNER</span>
+            <h2 class="heading-secondary">Why Travel With Skayora?</h2>
+            <p>
+              Thoughtful planning, personal service, and journeys worth
+              remembering.
+            </p>
+          </div>
+
+          <div class="grid grid--3-cols why-us-grid">
+            <article class="why-us-item">
+              <i class="ti ti-compass" aria-hidden="true"></i>
+              <h3>Expert Local Insights</h3>
+              <p>
+                Discover hidden gems and authentic experiences with carefully
+                selected destinations.
+              </p>
+            </article>
+
+            <article class="why-us-item">
+              <i class="ti ti-heart-handshake" aria-hidden="true"></i>
+              <h3>Personalized Journeys</h3>
+              <p>
+                Travel plans thoughtfully tailored to your interests, style, and
+                budget.
+              </p>
+            </article>
+
+            <article class="why-us-item">
+              <i class="ti ti-calendar-check" aria-hidden="true"></i>
+              <h3>Seamless Planning</h3>
+              <p>
+                From itineraries to bookings, every detail is organized for a
+                smoother trip.
+              </p>
+            </article>
+
+            <article class="why-us-item">
+              <i class="ti ti-shield-check" aria-hidden="true"></i>
+              <h3>Trusted & Reliable</h3>
+              <p>
+                Clear information and dependable service to help you travel with
+                confidence.
+              </p>
+            </article>
+
+            <article class="why-us-item">
+              <i class="ti ti-wallet" aria-hidden="true"></i>
+              <h3>Great Value</h3>
+              <p>
+                Carefully selected tours that balance memorable experiences with
+                your budget.
+              </p>
+            </article>
+
+            <article class="why-us-item">
+              <i class="ti ti-headset" aria-hidden="true"></i>
+              <h3>Dedicated Support</h3>
+              <p>
+                Helpful guidance before your departure and assistance when you
+                need it.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- travel planning process -->
+      <section class="section-process" id="journeys">
+        <div class="container">
+          <div class="process-header">
+            <span>YOUR TRIP, YOUR WAY</span>
+            <h2 class="heading-secondary">A Journey Made for You</h2>
+            <p>
+              From your first idea to the final details, we design a journey
+              tailored to your interests, travel style, and dreams.
+            </p>
+          </div>
+
+          <div class="process-timeline">
+            <svg
+              class="process-path"
+              viewBox="0 0 100 640"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M 50 0 C 10 80, 90 80, 50 160 S 10 240, 50 320 S 90 400, 50 480 S 10 560, 50 640"
+              />
+            </svg>
+
+            <article class="process-step">
+              <div class="process-content">
+                <span>01</span>
+                <h3>Consultation</h3>
+                <p>Tell us your travel dreams, interests, and budget.</p>
+              </div>
+              <div class="process-icon">
+                <i class="ti ti-message-circle" aria-hidden="true"></i>
+              </div>
+            </article>
+
+            <article class="process-step">
+              <div class="process-content">
+                <span>02</span>
+                <h3>Itinerary Design</h3>
+                <p>We create a personalized itinerary just for you.</p>
+              </div>
+              <div class="process-icon">
+                <i class="ti ti-map" aria-hidden="true"></i>
+              </div>
+            </article>
+
+            <article class="process-step">
+              <div class="process-content">
+                <span>03</span>
+                <h3>Booking</h3>
+                <p>We coordinate your bookings for a smooth journey.</p>
+              </div>
+              <div class="process-icon">
+                <i class="ti ti-calendar-check" aria-hidden="true"></i>
+              </div>
+            </article>
+
+            <article class="process-step">
+              <div class="process-content">
+                <span>04</span>
+                <h3>On-trip Support</h3>
+                <p>Enjoy your adventure with our support along the way.</p>
+              </div>
+              <div class="process-icon">
+                <i class="ti ti-headset" aria-hidden="true"></i>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- testimonials -->
+      <section class="section-testimonials" id="testimonials">
+        <div class="container">
+          <div class="testimonials-header">
+            <div>
+              <span>REAL TRAVEL EXPERIENCES</span>
+              <h2 class="heading-secondary">What Our Travelers Say</h2>
+              <p>
+                Real stories from travelers who explored the world with Skayora.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid--2-cols testimonials-grid">
+            <article class="testimonial-card">
+              <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                "An incredible experience from start to finish. The itinerary
+                was perfectly planned, and every detail made our trip
+                stress-free."
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="img/faces/sara.jpg" alt="Sarah Mitchell" />
+                <div>
+                  <h3>Sarah Mitchell</h3>
+                  <span>United States</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                "Our honeymoon in Bali was unforgettable. Everything was
+                organized beautifully, from the hotel to the amazing local
+                experiences."
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="img/faces/daniel.jpg" alt="Daniel Kim" />
+                <div>
+                  <h3>Daniel Kim</h3>
+                  <span>South Korea</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                "I loved how the trip matched my interests and budget. The
+                recommendations helped me discover places I would have missed."
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="img/faces/emma.jpg" alt="Emma Wilson" />
+                <div>
+                  <h3>Emma Wilson</h3>
+                  <span>United Kingdom</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                "From booking to the final day, the support was excellent. I
+                could relax and enjoy Japan without worrying about the details."
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="img/faces/james.jpg" alt="James Carter" />
+                <div>
+                  <h3>James Carter</h3>
+                  <span>Australia</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- call to action -->
+      <section class="section-cta" id="booking">
+        <div class="container">
+          <div class="cta-content">
+            <span>READY FOR YOUR NEXT ADVENTURE?</span>
+            <h2>Your Next Adventure Starts Here.</h2>
+            <p>
+              Tell us what inspires you, and let's create a journey you'll never
+              forget.
+            </p>
+
+            <div class="cta-actions">
+              <a href="#journeys" class="btn-cta-primary">
+                Plan My Trip
+                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a href="#tours" class="btn-cta-secondary">Explore Tours</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-main">
+          <!-- footer brand -->
+          <div class="footer-brand">
+            <a href="#" class="footer-logo" aria-label="Skayora Home">
+              <img src="img/logo.png" alt="Skayora Logo" />
+            </a>
+
+            <p>
+              Discover extraordinary destinations and create unforgettable
+              memories with journeys designed around you.
+            </p>
+
+            <div class="footer-socials">
+              <a href="#" aria-label="Instagram">
+                <i class="ti ti-brand-instagram"></i>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <i class="ti ti-brand-facebook"></i>
+              </a>
+              <a href="#" aria-label="X">
+                <i class="ti ti-brand-x"></i>
+              </a>
+              <a href="#" aria-label="Pinterest">
+                <i class="ti ti-brand-telegram"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- footer navigation -->
+          <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="#destinations">Destinations</a>
+            <a href="#journeys">Our Journeys</a>
+            <a href="#travel-style">Travel Style</a>
+            <a href="#inspirations">Travel Inspiration</a>
+          </div>
+
+          <!-- footer company -->
+          <div class="footer-links">
+            <h3>Company</h3>
+            <a href="#about">About Us</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#offers">Special Offers</a>
+            <a href="#booking">Plan Your Trip</a>
+          </div>
+
+          <!-- footer newsletter -->
+          <div class="footer-newsletter">
+            <h3>Stay Inspired</h3>
+            <p>Get travel inspiration and discover your next adventure.</p>
+
+            <form class="footer-form">
+              <label for="footer-email">Your email address</label>
+              <div class="footer-input-wrapper">
+                <input
+                  id="footer-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+                <button type="submit" aria-label="Subscribe">
+                  <i class="ti ti-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- footer bottom -->
+        <div class="footer-bottom">
+          <p>&copy; 2026 Skayora. All rights reserved.</p>
+
+          <div class="footer-bottom-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+          </div>
+
+          <a href="#" class="footer-back-to-top">
+            Back to top
+            <i class="ti ti-arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
