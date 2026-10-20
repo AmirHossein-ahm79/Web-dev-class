@@ -82,30 +82,31 @@ Default:
 
 :root {
   /* Brand colors */
-  --color-primary: #1d5e8c;
-  --color-primary-hover: #17496d;
-  --color-primary-light: #eaf3f9;
+  --color-primary: #1d5e8c; /*ok*/
+  --color-primary-hover: #17496d; /*ok*/
+  --color-primary-light: #eaf3f9; /*ok*/
 
-  --color-secondary: #123047;
+  --color-secondary: #123047; /*ok*/
   --color-secondary-hover: #0d2436;
 
   --color-accent: #f2a65a;
   --color-accent-light: #fdf1e3;
 
   /* Background colors */
-  --color-background: #f8fafc;
+  --color-background: #f8fafc; /*ok*/
   --color-surface: #ffffff;
-  --color-border: #e2e8f0;
+  --color-border: #e2e8f0; /*ok*/
 
   /* Text colors */
-  --color-heading: #123047;
+  --color-heading: #123047; /*ok*/
   --color-text: #334155;
   --color-text-muted: #64748b;
-  --color-text-inverse: #ffffff;
+  --color-text-inverse: #ffffff; /*ok*/
 
   /* Header colors */
-  --color-header-overlay: rgba(18, 48, 71, 0.68);
-  --color-nav-background: rgba(255, 255, 255, 0.94);
+  --color-header-overlay: rgba(18, 48, 71, 0.68); /*ok*/
+  --color-header-overlay-light: rgba(18, 48, 71, 0.05); /*ok*/
+  --color-nav-background: rgba(255, 255, 255, 0.94); /*ok*/
   --color-nav-text: #123047;
   --color-nav-text-hover: #1d5e8c;
 
@@ -114,15 +115,15 @@ Default:
   --color-footer-border: rgba(255, 255, 255, 0.14);
 
   /* Form colors */
-  --color-input-background: #ffffff;
-  --color-input-text: #334155;
-  --color-input-placeholder: #64748b;
-  --color-input-divider: #e2e8f0;
+  --color-input-background: #ffffff; /*ok*/
+  --color-input-text: #334155; /*ok*/
+  --color-input-placeholder: #64748b; /*ok*/
+  --color-input-divider: #e2e8f0; /*ok*/
 
   /* Shadows */
-  --shadow-subtle: 0 2px 8px rgba(18, 48, 71, 0.06);
+  --shadow-subtle: 0 2px 8px rgba(18, 48, 71, 0.06); /*ok*/
   --shadow-default: 0 4px 16px rgba(18, 48, 71, 0.1);
-  --shadow-elevated: 0 8px 32px rgba(18, 48, 71, 0.14);
+  --shadow-elevated: 0 8px 32px rgba(18, 48, 71, 0.14); /*ok*/
 }
 
 * {
@@ -139,6 +140,7 @@ Default:
 html {
   /* 10px / 16px = 0.625 = 62.5% */
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -175,4 +177,62 @@ a:link {
 
 .grid--4-cols {
   grid-template-columns: repeat(4, 1fr);
+}
+
+/* ====================== */
+/*        Buttons         */
+/* ====================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 100px;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ====================== */
+/*    Section Headers     */
+/* ====================== */
+.section-header-title {
+  margin-bottom: 6.4rem;
+  text-align: center;
+}
+
+.section-header-title span {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.section-header-title .heading-secondary {
+  margin-bottom: 1rem;
+  color: var(--color-heading);
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.section-header-title p {
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 1.6;
 }
